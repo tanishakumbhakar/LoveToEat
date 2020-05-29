@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Ingredients from './Ingredients';
 class Submit extends Component {
 
 	constructor(props) {
@@ -11,6 +11,8 @@ class Submit extends Component {
 
 	submitRecipe() {
 		console.log('button clicked');
+		console.log(this.name.value);
+		console.log(this.description.value);
 		this.props.history.push('/');
 	}
 
@@ -18,31 +20,23 @@ class Submit extends Component {
 		return (
 			<div>
 				
-				<div  classNameName="row">
-					<div classNameName="col-xs-12 col-sm-12">
+				<div className="row">
+					<div className="col-xs-12 col-sm-12">
 					<h2>Submit</h2>
 					<form>
 					  <div className="form-group">
-					    <label for="name">Name</label>
-					    <input type="text" className="form-control" id="name" placeholder="Enter the name of the recipe" />
+					    <label htmlFor="name">Name</label>
+					    <input type="text" ref={(input)=>{this.name=input;}} className="form-control" id="name" placeholder="Enter the name of the recipe" />
 					    
 					  </div>
 					  <div className="form-group">
-					    <label for="description">Description</label>
-					    <textarea className="form-control" id="description" placeholder="Enter a brief description"/>
+					    <label htmlFor="description">Description</label>
+					    <textarea ref={(input)=>{this.description=input;}} className="form-control" id="description" placeholder="Enter a brief description"/>
 					  </div>
-					   <div className="form-inline form-group">
-					    <label for="description">Quantity</label>
-					    <input type="text"  className="form-control" id="quantity" placeholder="Quantity"/>
-					  
-					  
-					    <label for="description">Ingredients</label>
-					    <input type="text"  className="form-control" id="ingredient" placeholder="Ingredients"/>
-					    <button onClick={this.submitRecipe} className="btn btn-info">Add</button>
-					  </div>
+					   <Ingredients/>
 					 
 					  
-					<button onClick={this.submitRecipe} className="btn btn-default">Submit a Recipe</button>
+					<button onClick={this.submitRecipe} className="btn btn-primary">Submit a Recipe</button>
 					</form>
 					</div>
 				</div>
